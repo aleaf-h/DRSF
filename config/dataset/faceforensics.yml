@@ -1,0 +1,49 @@
+train_cfg:
+  root: "/home/jiao/users/gaowanhui/FaceForensics++"
+  split: "train"
+  method: "all"
+  compression: "c40"
+  log_steps: 1000
+  val_steps: 1000
+  num_steps: 60000
+  transforms:
+    - name: "Resize"
+      params:
+        height: 299
+        width: 299
+    - name: "HorizontalFlip"
+      params:
+        p: 0.5
+    - name: "Normalize"
+      params:
+        mean: [0.5, 0.5, 0.5]
+        std: [0.5, 0.5, 0.5]
+val_cfg:
+  root:  "/home/jiao/users/gaowanhui/FaceForensics++" #"/media/jiao/KESU/dataset/FaceForensics++/test/"  #"/home/jiao/users/gaowanhui/FaceForensics++"
+  split: "val"
+  method: "all"  #'Deepfakes', 'Face2Face', 'FaceSwap', 'NeuralTextures'
+  compression: "c40"
+  transforms:
+    - name: "Resize"
+      params:
+        height: 299
+        width: 299
+    - name: "Normalize"
+      params:
+        mean: [0.5, 0.5, 0.5]
+        std: [0.5, 0.5, 0.5]
+
+test_cfg:
+  root:  "/home/jiao/users/gaowanhui/FaceForensics++" #"/media/jiao/KESU/dataset/FaceForensics++/test/"  #"/home/jiao/users/gaowanhui/FaceForensics++"
+  split: "test"
+  method: "all"  #'Deepfakes', 'Face2Face', 'FaceSwap', 'NeuralTextures'
+  compression: "c40"
+  transforms:
+    - name: "Resize"
+      params:
+        height: 299
+        width: 299
+    - name: "Normalize"
+      params:
+        mean: [0.5, 0.5, 0.5]
+        std: [0.5, 0.5, 0.5]

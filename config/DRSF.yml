@@ -1,0 +1,34 @@
+model:
+  name: DRSF
+  num_classes: 1
+config:
+  lambda_1: 0.1
+  lambda_2: 0.1
+  distribute:
+    backend: nccl
+  optimizer:
+    name: adam
+    lr: 0.0001
+    weight_decay: 0.00001
+
+  scheduler:
+    name: StepLR
+    step_size: 22500
+    gamma: 0.5
+  resume: False
+  resume_best: False
+  id: FF++c40_N1  #wild   #CelebDF    #FF++c40
+  loss: binary_ce
+  metric: AUC
+  debug: False
+  device: "cuda:0"
+  ckpt: best_model_auc49000   #latest_model    #best_model_40000
+data:
+  train_batch_size: 16
+  val_batch_size: 32
+  test_batch_size: 64
+  name: FaceForensics    #WildDeepfake  #CelebDF     #FaceForensics #DFDC
+  file: "./config/dataset/faceforensics.yml"  #wilddeepfake  #celeb_df    #faceforensics #dfdc
+  train_branch: "train_cfg"
+  val_branch: "val_cfg"
+  test_branch: "test_cfg"
